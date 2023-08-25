@@ -102,7 +102,8 @@ validate_login_token("invalid token", string) # False
     password_hash: Any,
     salt: Any,
     login_token: Any
-) -> None```
+) -> None
+```
 
 * ```(method) def to_string(self: Self@Secured_Password) -> str```
 
