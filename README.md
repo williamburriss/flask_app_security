@@ -99,9 +99,20 @@ validate_login_token("invalid token", string) # False
 
 * ```(method) def __init__(self: Self@Secured_Password, password_hash: Any, salt: Any, login_token: Any) -> None```
 
+Constructor
+
 * ```(method) def to_string(self: Self@Secured_Password) -> str```
 
+Creates a string that can be stored in a database.
+This string can later be used to create another
+instance of Secured_Password using its static
+from_string() method.
+
 * ```(staticmethod) def from_string(string: str) -> Secured_Password```
+
+Creates a Secured_Password instance from a string.
+Used to convert the string returned by this class'
+to_string() method back into a Secured_Password.
 
 # - session_utils -
 #### module: flask_app_security.session_utils
