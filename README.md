@@ -7,7 +7,7 @@ Created by William Burriss
     - joserfc
 
 
-# flask_app_security.password_utils
+# --flask_app_security.password_utils--
 
 ## secure_password
 
@@ -89,3 +89,5 @@ validate_login_token(token, string) # True
 validate_login_token("invalid token", secured_password) # False
 validate_login_token("invalid token", string) # False
 ```
+
+# --flask_app_security.session_utils--
