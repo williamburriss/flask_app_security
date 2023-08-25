@@ -91,11 +91,12 @@ validate_login_token("invalid token", secured_password) # False
 validate_login_token("invalid token", string) # False
 ```
 
-## (CLASS) Secured_Password
+## Secured_Password
 
 
-
+```
 (class) Secured_Password
+```
 
 * ```(method) def __init__(self: Self@Secured_Password, password_hash: Any, salt: Any, login_token: Any) -> None```
 
