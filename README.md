@@ -2,6 +2,10 @@
 
 Created by William Burriss
 
+### Dependencies
+
+    - joserfc
+
 
 # flask_app_security.password_utils
 
