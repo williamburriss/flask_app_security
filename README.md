@@ -156,4 +156,9 @@ t = 2 * 1000 # 2 seconds (as ms)
 
 encoded_dict = encode_dict(test_dict, secret_key, t)
 decoded_dict = decode_dict(encoded_dict, secret_key) # {"username": "my_username", "email": "myemail@test.com", "user_id": 123456789}
+decoded_dict = decode_dict(encoded_dict, "incorrect_secret_key") # None
+
+time.sleep(2.1) # sleeps for 2 seconds, so that the encoded dict will have expired
+
+decoded_dict = decode_dict(encoded_dict, secret_key) # None
 ```
