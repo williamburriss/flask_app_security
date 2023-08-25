@@ -2,7 +2,7 @@
 
 Created by William Burriss
 
-## flask_app_security.password_utils
+## password_utils
 
 ### secure_password
 
@@ -15,3 +15,11 @@ and then hashing the password+salt. This is done to prevent
 duplicate passwords from having the same hash. A login_token
 is also generated. This should be stored !!SECURELY!! on the
 client side for the use of remembering the user. 
+
+Example:
+```
+from flask_app_security.password_utils import secure_password
+
+password = "my_password"
+secured_password = secure_password(password)
+```
