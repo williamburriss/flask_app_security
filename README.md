@@ -58,3 +58,34 @@ validate_password("password", string) # True
 validate_password("password wrong", secured_password) # False
 validate_password("password wrong", string) # False
 ```
+
+## validate_login_token
+
+```
+(function) def validate_login_token(
+    login_token: str,
+    _secured_password: Any
+) -> (bool | Any)
+```
+
+Takes a plain login_token and a Secured_Password and returns
+if the login_token is correct.
+
+Note: the Secured_Password can either be an instance of
+Secured_Password OR it can be the string returned from
+Secured_Password's to_string() method
+
+Example:
+```
+from flask_app_security.password_utils import secure_password, validate_login_token
+
+secured_password = secure_password("password")
+token = secured_password.login_token
+string = secured_password.to_string()
+
+validate_login_token(token, secured_password) # True
+validate_login_token(token, string) # True
+
+validate_login_token("invalid token", secured_password) # False
+validate_login_token("invalid token", string) # False
+```
