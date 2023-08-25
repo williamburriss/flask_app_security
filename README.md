@@ -2,6 +2,8 @@
 
 Created by William Burriss
 
+Provides utilities for securing passwords and handling user sessions.
+
 ### Dependencies
 
     - joserfc
