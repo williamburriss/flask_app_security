@@ -22,5 +22,32 @@ Example:
 from flask_app_security.password_utils import secure_password
 
 password = "my_password"
-secured_password = secure_password(password)
+secured_password_string = secure_password(password).to_string()
+```
+
+## validate_password
+
+```
+(function) def validate_password(
+    password: str,
+    _secured_password: Any
+) -> (bool | Any)
+```
+
+Takes a plain text password and a Secured_Password and returns
+if the password is correct.
+
+Note: the Secured_Password can either be an instance of
+Secured_Password OR it can be the string returned from
+Secured_Password's to_string() method
+
+Example:
+```
+secured_password = secure_password("password")
+string = secured_password.to_string()
+validate_password("password", secured_password) # True
+validate_password("password", string) # True
+
+validate_password("password wrong", secured_password) # False
+validate_password("password wrong", string) # False
 ```
