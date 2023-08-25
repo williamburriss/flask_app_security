@@ -44,8 +44,10 @@ Secured_Password's to_string() method
 Example:
 ```
 from flask_app_security.password_utils import secure_password, validate_password
+
 secured_password = secure_password("password")
 string = secured_password.to_string()
+
 validate_password("password", secured_password) # True
 validate_password("password", string) # True
 
