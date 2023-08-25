@@ -106,7 +106,7 @@ validate_login_token("invalid token", string) # False
 
 Encodes a python dictionary provided a secret key used to
 encode. Takes optional parameter for creating a timed
-encode. Meaning the encoded dict can have an expiriation.
+encode. Meaning the encoded dict will have an expiriation.
 This is done by passing the time in ms as the third 
 parameter. If no 3rd parameter or -1 is passed, no time
 will be set and the encoded dict will not expire.
