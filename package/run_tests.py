@@ -1,20 +1,20 @@
-from password_utils import hash_password_custom, gen_salt_custom, Secured_Password, gen_login_token, secure_password, validate_password, validate_login_token
+from password_utils import __hash_password_custom__, __gen_salt_custom__, Secured_Password, __gen_login_token__, secure_password, validate_password, validate_login_token
 from session_utils import decode_dict, encode_dict
 import time
 
-def test_hash_password_custom():
-    hashed = hash_password_custom("password", "salt")
+def test___hash_password_custom__():
+    hashed = __hash_password_custom__("password", "salt")
     if hashed != "7a37b85c8918eac19a9089c0fa5a2ab4dce3f90528dcdeec108b23ddf3607b99":
-        raise Exception("hash_password_custom test failed")
-test_hash_password_custom()
+        raise Exception("__hash_password_custom__ test failed")
+test___hash_password_custom__()
 
-def test_gen_salt_custom():
-    salt = gen_salt_custom(10)
-    salt2 = gen_salt_custom(10)
+def test___gen_salt_custom__():
+    salt = __gen_salt_custom__(10)
+    salt2 = __gen_salt_custom__(10)
     failed = len(salt) != 8 and len(salt2) != 10
     if failed:
-        raise Exception("gen_salt_custom test failed")
-test_gen_salt_custom()
+        raise Exception("__gen_salt_custom__ test failed")
+test___gen_salt_custom__()
 
 def test_secured_password():
     failed = False
@@ -35,7 +35,7 @@ def test_secure_password():
     failed = False
     secured_password = secure_password("password")
     string = secured_password.to_string()
-    failed = failed or not secured_password.equals(Secured_Password.from_string(string))
+    failed = failed or not secured_password.__equals__(Secured_Password.from_string(string))
 
     if failed:
         raise Exception("secure_password test failed")

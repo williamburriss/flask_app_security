@@ -2,7 +2,7 @@ import string
 from secrets import choice, token_hex
 from hashlib import sha256
 
-def hash_password_custom(password: str, salt: str) -> str:
+def __hash_password_custom__(password: str, salt: str) -> str:
     """
     Creates a sha256 hash given a password string and a string of salt.
     """
@@ -10,7 +10,7 @@ def hash_password_custom(password: str, salt: str) -> str:
     hashed_password = sha256(temp_password.encode("utf-8")).hexdigest()
     return hashed_password
 
-def gen_salt_custom(length: int = 8) -> str:
+def __gen_salt_custom__(length: int = 8) -> str:
     """
     Creates a string of random letters and numbers provided a string
     length. By default the string will have a length of 8 if no length
@@ -20,7 +20,7 @@ def gen_salt_custom(length: int = 8) -> str:
     salt = ''.join(choice(alphabet) for i in range(length))
     return salt
 
-def gen_login_token(length: int = 32) -> str:
+def __gen_login_token__(length: int = 32) -> str:
     """
     Creates a token to be stored on the client side to validate login.
     This should be used instead of storing the users password directly
@@ -50,7 +50,7 @@ class Secured_Password:
         out = "-".join([self.password_hash,self.salt,self.login_token])
         return out
     
-    def equals(self, other) -> bool:
+    def __equals__(self, other) -> bool:
         """
         Not used to validate user inputed password!
         Please use validate_password or validate_login_token
@@ -83,10 +83,10 @@ def secure_password(password: str) -> Secured_Password:
     is also generated. This should be stored !!SECURELY!! on the
     client side for the use of remembering the user. 
     """
-    salt = gen_salt_custom()
+    salt = __gen_salt_custom__()
     temp_password = password + salt
     hashed_password = sha256(temp_password.encode("utf-8")).hexdigest()
-    token = gen_login_token()
+    token = __gen_login_token__()
     
     return Secured_Password(hashed_password, salt, token)
 
@@ -103,7 +103,7 @@ def validate_password(password: str, _secured_password):
     if type(_secured_password) == str:
         secured_password = Secured_Password.from_string(_secured_password)
     
-    hashed_password = hash_password_custom(password, secured_password.salt)
+    hashed_password = __hash_password_custom__(password, secured_password.salt)
     return hashed_password == secured_password.password_hash
 
 def validate_login_token(login_token: str, _secured_password):

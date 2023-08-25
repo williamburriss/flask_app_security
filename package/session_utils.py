@@ -2,7 +2,7 @@ from joserfc import jwt
 import json
 import time
 
-from password_utils import gen_salt_custom
+from password_utils import __gen_salt_custom__
 
 def encode_dict(d: dict, secret_key: str, valid_time_ms = -1.0) -> str:
     """
@@ -18,7 +18,7 @@ def encode_dict(d: dict, secret_key: str, valid_time_ms = -1.0) -> str:
         cur_time = time.time()
         invalid_time = cur_time + (valid_time_ms/1000)
         clone_dict["__invalid_time__"] = str(invalid_time)
-    salt = gen_salt_custom()
+    salt = __gen_salt_custom__()
     clone_dict["__salt__"] = salt
     encoded = jwt.encode({"alg": "HS256"}, clone_dict, secret_key)
     return encoded
