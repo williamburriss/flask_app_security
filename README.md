@@ -10,6 +10,23 @@ Created by William Burriss
 (class) Secured_Password
 ```
 
+Secures a users password, see ```__init__``` below
+
+```
+(method) def __init__(
+    self: Self@Secured_Password,
+    password_hash: Any,
+    salt: Any,
+    login_token: Any
+) -> None
+```
+
+Creates instance of secured password.
+Secured_Password contains 3 fields:
+    - password_hash
+    - salt
+    - login_tokena
+
 #### gen_login_token(length)
 
 ```
