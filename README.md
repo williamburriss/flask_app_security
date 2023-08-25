@@ -93,3 +93,67 @@ validate_login_token("invalid token", string) # False
 
 # - session_utils -
 #### module: flask_app_security.session_utils
+
+## encode_dict
+
+```
+(function) def encode_dict(
+    d: dict,
+    secret_key: str,
+    valid_time_ms: float = -1
+) -> str
+```
+
+Encodes a python dictionary provided a secret key used to
+encode. Takes optional parameter for creating a timed
+encode. Meaning the encoded dict can have an expiriation.
+This is done by passing the time in ms as the third 
+parameter. If no 3rd parameter or -1 is passed, no time
+will be set and the encoded dict will not expire.
+
+Example:
+```
+from flask_app_security.session_utils import encode_dict
+
+secret_key = "my_secret_key"
+test_dict = {
+    "username": "my_username",
+    "email": "myemail@test.com",
+    "user_id": 123456789
+}
+
+encoded_dict = encode_dict(test_dict, secret_key)
+
+valid_until = 10 * 1000 # 10 seconds (as ms)
+
+encoded_dict_timed = encode_dict(test_dict, secret_key, valid_until)
+```
+
+## decode_dict
+
+```
+(function) def decode_dict(
+    string: str,
+    secret_key: str
+) -> dict
+```
+
+Decodes dict. Works with both timed and non-timed encodes.
+Returns None if expired or if invalid secret_key is given.  
+
+Example:
+```
+from flask_app_security.session_utils import encode_dict, decode_dict
+
+secret_key = "my_secret_key"
+test_dict = {
+    "username": "my_username",
+    "email": "myemail@test.com",
+    "user_id": 123456789
+}
+
+t = 2 * 1000 # 2 seconds (as ms)
+
+encoded_dict = encode_dict(test_dict, secret_key, t)
+decoded_dict = decode_dict(encoded_dict, secret_key) # {"username": "my_username", "email": "myemail@test.com", "user_id": 123456789}
+```
