@@ -12,6 +12,8 @@ Created by William Burriss
 
 Secures a users password, see ```__init__``` below
 
+#### Secured_Password()
+
 ```
 (method) def __init__(
     self: Self@Secured_Password,
@@ -26,6 +28,27 @@ Secured_Password contains 3 fields:
     - password_hash
     - salt
     - login_tokena
+
+#### secured_password_instance.to_string()
+
+```
+(method) def to_string(self: Self@Secured_Password) -> str
+```
+
+Creates a string that can be stored in a database (or elsewhere).
+This string can later be used to create another
+instance of Secured_Password using its static
+from_string() method.
+
+#### Secured_Password.from_string()
+```
+@staticmethod
+(method) def from_string(string: str) -> Secured_Password
+```
+
+Creates a Secured_Password instance from a string.
+Used to convert the string returned by this class'
+to_string() method back into a Secured_Password.
 
 #### gen_login_token(length)
 
