@@ -8,7 +8,7 @@ Created by William Burriss
 
 
 # - password_utils -
-### flask_app_security.password_utils
+#### flask_app_security.password_utils
 
 ## secure_password
 
@@ -92,4 +92,4 @@ validate_login_token("invalid token", string) # False
 ```
 
 # - session_utils -
-### flask_app_security.session_utils
+#### flask_app_security.session_utils
